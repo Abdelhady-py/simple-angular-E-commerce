@@ -1,0 +1,60 @@
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-3">
+<p>filter by name</p>
+
+<input type="text" class="form-control" [(ngModel)]="filteredItemsByName">
+<p>filter by Price</p>
+<input type="text" class="form-control" [(ngModel)]="filteredItemsByPrice"><br><br>
+
+<p>filter by category</p>
+<select [(ngModel)]="filteredItemsByCat">
+  <option [value]="1">category 1</option>
+  <option [value]="2">category 2</option>
+  <option [value]="3">category 3</option>
+  <option [value]="4">category 4</option>
+</select>
+<div>
+  <table class="table bg-danger" >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Purchase Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.title }}</td>
+        <td>{{ item.price | currency:'USD':'symbol' }}</td>
+        <td>{{ item.quantity }}</td>
+        <!-- <td>{{ item.price * item.quantity! | currency:'USD':'symbol' }}</td> -->
+        <td>{{ item.purchaseDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total:</td>
+        <!-- <td>{{ calculateTotalPrice() | currency:'USD':'symbol' }}</td> -->
+      </tr>
+    </tfoot>
+  </table>
+</div><br>
+
+
+
+<h2>Credit Card</h2>
+<label for="creditCardNumber">Credit Card Number:</label>
+<input type="text" id="creditCardNumber" [(ngModel)]="creditCardNumber" (input)="formatCreditCardNumber()">
+
+<p>Formatted Credit Card Number: {{ formattedCreditCardNumber }}</p>
+
+</div>
+</div>
+<div class="row">
+<app-products (buyProductEvent)="addToCart($event)" [filteredProductsByCat]="filteredItemsByCat" [filteredProductsByName]="filteredItemsByName" [filteredProductsByPrice]="filteredItemsByPrice"></app-products>
+</div>

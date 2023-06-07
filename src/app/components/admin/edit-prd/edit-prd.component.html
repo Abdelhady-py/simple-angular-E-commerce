@@ -1,0 +1,74 @@
+<div class="card mb-4">
+  <div class="card-header">
+    editing product
+
+
+
+ </div>
+  <div class="card-body">
+    <form (ngSubmit)="updateProduct()" #editProductForm="ngForm">
+      <div class="form-group row mb-2">
+        <label for="productName" class="col-md-2 col-form-label">name</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="productName" name="name" placeholder="productName (required)"
+  [value]="product.title"
+  required minlength="3" [(ngModel)]="product.title" #nameInput="ngModel"
+  [ngClass]="{'is-invalid': (nameInput.touched || nameInput.dirty) && nameInput.invalid}">
+
+
+          <span class="invalid-feedback">
+            <span *ngIf="nameInput.errors?.['required']">Plaese Enter Your product Name</span>
+            <span *ngIf="nameInput.errors?.['minlength']">First Name must be longer than 3 characters</span>
+
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="quantity">quantity</label>
+        <div class="col-md-8">
+          <input class="form-control" value="55" id="quantity" type="number" placeholder="quantity (required)" required
+         name="quantity" [(ngModel)]="product.quantity" #quantityInput="ngModel"  [ngClass]="{'is-invalid':(quantityInput.touched || quantityInput.dirty) && quantityInput.invalid}">
+
+            <span class="invalid-feedback">
+              <span *ngIf="quantityInput.errors?.['required']">Plaese Enter quantity</span>
+
+            </span>
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="price">price</label>
+        <div class="col-md-8">
+          <input class="form-control" id="price" type="number" placeholder="price (required)"
+            name="price" [(ngModel)]="product.price" #price="ngModel"  [ngClass]="{'is-invalid':(price.touched || price.dirty) && price.invalid}">
+
+            <span class="invalid-feedback">
+              <span *ngIf="price.errors?.['required']">Plaese price</span>
+
+            </span>
+
+        </div>
+
+
+
+      </div>
+
+
+      <div>
+        <p>Select a category</p>
+        <select [(ngModel)]="product.category" name="categoryId">
+          <option value="1">Category 1</option>
+          <option value="2">Category 2</option>
+          <option value="3">Category 3</option>
+          <option value="4">Category 4</option>
+        </select>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-success" [disabled]="editProductForm.invalid">Submit</button>
+
+    </form>
+  </div>
+</div>

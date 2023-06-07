@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-info p-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="all" routerLinkActive="rstyle" >Hady Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 active" aria-current="page" routerLink="home" routerLinkActive="rstyle" >Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="products" routerLinkActive="rstyle">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="obs" routerLinkActive="rstyle">observable</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink='admin'>Admin</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Company
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li *ngIf="isLoggedIn" class="nav-item">
+              <a class="nav-link active" aria-current="page" role="button" (click)="loggedMeOut()">Logout</a>
+            </li>
+            <li *ngIf="!isLoggedIn" class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/login" routerLinkActive="active">login</a>
+            </li>
+
+           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/signup" routerLinkActive="active">Signup</a>
+          </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
+        <li class="nav-item mx-2">
+          <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-google-plus-square"></i></a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-facebook-square"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<img src="/assets/photographer-working-at-his-desk.jpg" class="img-fluid" style="height:400px ; width: 100%;">
+

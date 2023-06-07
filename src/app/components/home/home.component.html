@@ -1,0 +1,12 @@
+
+<p>Class Model</p>
+<h2>{{trackClass.trackName}}</h2>
+<img src="{{trackClass.trackImage}}" class="img-fluid">
+<ul>
+  <li *ngFor="let course of trackClass.trackCourses">{{course}}</li>
+</ul>
+<p>Interface Model</p>
+<h1>{{track.trackName}}</h1>
+<h3>{{track.trackNum}}</h3>
+
+<h4 *ngFor="let c of track.trackCourses">Course Name: {{c}}</h4>

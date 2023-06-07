@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6 offset-3">
+      <form class="form-control" [formGroup]="userForm" (ngSubmit)="addUser()">
+          <div class="input-group mb-3">
+
+              <input formControlName="username" type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':(username?.touched||username?.dirty) && username?.invalid}"
+              >
+
+              <span class="invalid-feedback">
+                <span *ngIf="username?.errors?.['required']">Please enter username</span>
+                <span *ngIf="username?.errors?.['pattern']">username is at least 3 characters</span>
+
+              </span>
+            </div>
+            <div class="input-group mb-3">
+
+              <input formControlName="email" type="text" class="form-control" name="email" placeholder="email" aria-label="email" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':(email?.touched||email?.dirty) && email?.invalid}"
+              >
+
+              <span class="invalid-feedback">
+                <span *ngIf="email?.errors?.['required']">Please enter your email</span>
+              </span>
+            </div>
+            <div class="input-group mb-3">
+
+              <input formControlName="password" type="text" class="form-control" name="password" placeholder="password" aria-label="password" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':(password?.touched||password?.dirty) && password?.invalid}"
+              >
+              <span class="invalid-feedback">
+                <span *ngIf="password?.errors?.['required']">Please enter your password</span>
+
+              </span>
+            </div>
+            <div formArrayName="mobiles">
+              <div *ngFor="let add of mobiles.controls;let i=index">
+                <div [formGroupName]="i">
+
+                  mobile:
+                  <input type="text" formControlName="mobile">
+
+                  <button class="btn btn-danger " (click)="removeMobile(i)">Remove</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="addMobile()">Add mobile</button>
+            <button class="btn btn-primary text-right">signUp</button>
+          </form>
+  </div>
+</div>

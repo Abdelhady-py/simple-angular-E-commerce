@@ -1,0 +1,63 @@
+<div class="container-fluid row p-0 m-0">
+  <div class="row">
+  <div class="aside col-4 h-100">
+    <img [src]="logo" class="img-fluid" *ngIf="!isPurchased">
+    <div *ngIf="isPurchased">
+      Thanks for purchasing from our Store, {{ clientName }}!<br><br>
+    </div><br><br>
+    <!-- <p>Select a category to filter</p>
+    <select class="form-control" (change)="filterProducts($event)">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categoryIn; let i = index" [value]="i">{{ category }}</option>
+    </select> -->
+
+
+
+        <h3>Sort From A to Z : </h3>
+        <button class="border-0" style="background-color: white;"><i class="fa-solid fa-arrow-up-a-z"
+            style="color:blue;font-size:35px"></i></button>
+
+    </div>
+
+    <div class="middle col-8 bg-light">
+      <div class="row">
+      <div class="col-4" *ngFor="let product of filteredProduct"  [ngClass]="{ 'bg-danger': product.quantity === 1 }">
+        <ng-container *ngIf="product.quantity !== undefined">
+          <div class="card" style="width: 18rem;" borderDir >
+            <img src="{{ product.image }}" class="card-img-top h-50 w-50" alt="..." borderDir (click)="prdDetails(product.id)">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="text-decoration-line-through">{{product.price | currency:'USD':'symbol'}}</h5>
+              <h5>{{product.price | calcDiscount:75 | currency}}</h5>
+              <button class="btn btn-success" routerLink="edit" (click)="prdEdit(product.id)">Edit</button>
+              <button class="btn btn-danger mx-1" (click)="deleteProduct(product.id)" >Delete</button>
+
+              <ng-container [ngSwitch]="product.quantity">
+                <ng-container *ngSwitchCase="1">
+                  <p>Last item</p>
+                  <button class="btn btn-primary" (click)="addToCart(product)" (click)="buy()" (click)="buyProduct(product)">Buy</button>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                  <p>Last two items</p>
+                  <button class="btn btn-primary" (click)="addToCart(product)"  (click)="buy()" (click)="buyProduct(product)">Buy</button>
+                </ng-container>
+                <ng-container *ngSwitchCase="0">
+                  <p>Out of stock</p>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <p>In stock</p>
+                  <button class="btn btn-primary" (click)="addToCart(product)" (click)="buy()" (click)="buyProduct(product)">Buy</button>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  </div>
+ </div>
+
+

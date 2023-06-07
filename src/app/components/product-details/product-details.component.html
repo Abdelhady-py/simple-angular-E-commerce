@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="row mb-4">
+    <div class="col-sm-6">
+
+      <img [src]="product?.image" class="img-fluid">
+    </div>
+    <div class="col-sm-6">
+
+
+      <h2>{{product?.title}}</h2><br><br>
+      <p>{{product?.description}}</p>
+
+      <h3>Price: {{product?.price | currency}}</h3>
+
+    </div>
+  </div>
+</div>
+
+
+<button class="btn btn-primary" (click)="nextPrd()">next</button>
+<button class="btn btn-primary" (click)="prevPrd()">previous</button>
+<button class="btn btn-primary" (click)="backHome()">Back</button>

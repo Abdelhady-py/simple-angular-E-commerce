@@ -1,0 +1,150 @@
+<!--
+<div class="row">
+  <div class="col-md-6 offset-3">
+      <form class="form-control" #formProduct="ngForm" (ngSubmit)="query === '0' ? addProduct() : updateProduct()" >
+          <div class="input-group mb-3">
+
+              <input required minlength="3" #title="ngModel" type="text" name="name" [(ngModel)]="product.name" class="form-control" placeholder="title" aria-label="title" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':(title.touched || title.dirty) && title.invalid}"
+              >
+              <span class="invalid-feedback">
+                  <span *ngIf="title.errors?.['required']">Plaese Enter product name</span>
+                  <span *ngIf="title.errors?.['minlength']">Product must be longer than 3 characters</span>
+
+                </span>
+            </div>
+            <div class="input-group mb-3">
+
+              <input required #price="ngModel" type="text" class="form-control" [(ngModel)]="product.price" name="price" placeholder="price" aria-label="price" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':(price.touched || price.dirty) && price.invalid}"
+              >
+              <span class="invalid-feedback">
+                  <span *ngIf="price.errors?.['required']">Plaese Enter Your price</span>
+                </span>
+            </div>
+
+
+            <div class="form-group row mb-2">
+              <label class="col-md-2 col-form-label" for="quantity">quantity</label>
+              <div class="col-md-8">
+                <input class="form-control" id="quantity" type="number" placeholder="quantity (required)" required
+               name="quantity" [(ngModel)]="product.quantity" #quantityInput="ngModel"  [ngClass]="{'is-invalid':(quantityInput.touched || quantityInput.dirty) && quantityInput.invalid}">
+
+                  <span class="invalid-feedback">
+                    <span *ngIf="quantityInput.errors?.['required']">Plaese Enter quantity</span>
+
+                  </span>
+
+              </div>
+            </div>
+
+
+                <div>
+        <p>Select a category</p>
+        <select [(ngModel)]="product.categoryId" name="categoryId">
+          <option value="1">Category 1</option>
+          <option value="2">Category 2</option>
+          <option value="3">Category 3</option>
+          <option value="4">Category 4</option>
+        </select>
+      </div>
+
+
+            <button [disabled]="formProduct.invalid"  class="btn btn-primary text-right"> {{query === "0" ? 'Add Product' : 'Edit Product'}} </button>
+      </form>
+  </div>
+</div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="card mb-4">
+  <div class="card-header">
+    add product
+
+
+
+ </div>
+  <div class="card-body">
+    <form (ngSubmit)="addProduct()" #addProductForm="ngForm">
+      <div class="form-group row mb-2">
+        <label for="productName" class="col-md-2 col-form-label">name</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="productName" name="name" placeholder="productName (required)"
+            required minlength="3" [(ngModel)]="product.title" #nameInput="ngModel"
+            [ngClass]="{'is-invalid':(nameInput.touched || nameInput.dirty) && nameInput.invalid}">
+
+          <span class="invalid-feedback">
+            <span *ngIf="nameInput.errors?.['required']">Plaese Enter Your product Name</span>
+            <span *ngIf="nameInput.errors?.['minlength']">First Name must be longer than 3 characters</span>
+
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="quantity">quantity</label>
+        <div class="col-md-8">
+          <input class="form-control" id="quantity" type="number" placeholder="quantity (required)" required
+         name="quantity" [(ngModel)]="product.quantity" #quantityInput="ngModel"  [ngClass]="{'is-invalid':(quantityInput.touched || quantityInput.dirty) && quantityInput.invalid}">
+
+            <span class="invalid-feedback">
+              <span *ngIf="quantityInput.errors?.['required']">Plaese Enter quantity</span>
+
+            </span>
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="price">price</label>
+        <div class="col-md-8">
+          <input class="form-control" id="price" type="number" placeholder="price (required)"
+            name="price" [(ngModel)]="product.price" #price="ngModel"  [ngClass]="{'is-invalid':(price.touched || price.dirty) && price.invalid}">
+
+            <span class="invalid-feedback">
+              <span *ngIf="price.errors?.['required']">Plaese price</span>
+
+            </span>
+
+        </div>
+
+
+
+      </div>
+
+
+      <div>
+        <p>Select a category</p>
+        <select [(ngModel)]="product.categoryId" name="categoryId">
+          <option value="1">Category 1</option>
+          <option value="2">Category 2</option>
+          <option value="3">Category 3</option>
+          <option value="4">Category 4</option>
+        </select>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-success" [disabled]="addProductForm.invalid">Submit</button>
+
+    </form>
+  </div>
+</div>
+
+
+<h2 >{{product | json}}</h2>
