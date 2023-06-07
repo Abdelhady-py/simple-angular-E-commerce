@@ -1,10 +1,49 @@
 <div class="row">
   <div class="col-md-6 offset-3">
-      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <button type="button" class="btn btn-success" (click)="loggedMeIn()">
-              Logged-in
-          </button>
+    <form class="form-control" (ngSubmit)="loggedMeIn()">
+      <div class="input-group mb-3">
+        <input
+          formControlName="username"
+          type="text"
+          name="username"
+          class="form-control"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+
+        <span class="invalid-feedback">
+          <span>Please enter username</span>
+        </span>
       </div>
-      <div #local></div>
+
+      <div class="input-group mb-3">
+        <input
+          formControlName="password"
+          type="text"
+          class="form-control"
+          name="password"
+          placeholder="password"
+          aria-label="password"
+          aria-describedby="basic-addon1"
+        />
+        <span class="invalid-feedback">
+          <span>Please enter your password</span>
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn-success" (click)="loggedMeIn()">
+        Logged-in
+      </button>
+    </form>
   </div>
+</div>
+
+<div class="col-md-6 offset-3">
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic mixed styles example"
+  ></div>
+  <div #local></div>
 </div>
